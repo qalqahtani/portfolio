@@ -164,7 +164,7 @@ export const content: Content = {
         title: "Real-Time Data Engineering Pipeline",
         arabicTitle: "مسار هندسة البيانات في الوقت الفعلي",
         description:
-          "مشروع شخصي لبناء مسار متكامل لهندسة البيانات في الوقت الفعلي. يعتمد Apache Kafka للبث الفوري، وApache Spark لمعالجة البيانات الضخمة، وحزمة ELK للمراقبة الشاملة. مع Grafana وPrometheus لرصد أداء الخط، وKafka Schema Registry لإدارة الـ Schema والتحقق من صحته.",
+          "مشروع شخصي لبناء مسار متكامل لهندسة البيانات في الوقت الفعلي. يعتمد Apache Kafka للبث الفوري، وApache Spark لمعالجة البيانات الضخمة، وحزمة ELK للمراقبة الشاملة. مع Grafana وPrometheus لرصد أداء المسار، وKafka Schema Registry لإدارة الـ Schema والتحقق من صحته.",
         tags: ["Apache Kafka", "Apache Spark", "Elasticsearch", "Kibana", "Grafana", "Prometheus"],
       },
       {

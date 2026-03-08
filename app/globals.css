@@ -1,26 +1,109 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
+/* ─── Color tokens — extracted directly from Ministry of Energy logo ─────── */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Backgrounds */
+  --color-bg:           #FFFFFF;
+  --color-surface:      #F2F8F4;
+
+  /* Cards / borders */
+  --color-card:         #FFFFFF;
+  --color-border:       #D2E8DA;
+
+  /* Primary accent — deep forest green from logo typography */
+  --color-accent:       #1D3D2A;
+  --color-accent-hover: #142B1D;
+
+  /* Secondary accent — orb teal */
+  --color-teal:         #3AAFAA;
+  --color-teal-hover:   #2E9994;
+
+  /* Text scale */
+  --color-text:         #111914;   /* near-black, green undertone          */
+  --color-muted:        #475F52;   /* secondary text                       */
+  --color-subtle:       #7A9386;   /* tertiary / placeholders              */
+
+  /* Decorative orb palette (used in Hero gradient only) */
+  --color-orb-green:    #52B878;
+  --color-orb-blue:     #5497C8;
+  --color-orb-gold:     #C4A268;
+
+  /* Fonts */
+  --font-sans: var(--font-active);
+  --font-mono: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas, monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ─── Font switching ────────────────────────────────────────────────────── */
+html[lang="ar"] { --font-active: var(--font-cairo); }
+html[lang="en"] { --font-active: var(--font-inter);  }
+
+/* ─── Base ──────────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  color-scheme: light;
 }
+
+html { scroll-behavior: smooth; }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #FFFFFF;
+  color: #111914;
+  font-family: var(--font-active, var(--font-cairo, sans-serif));
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
+
+/* ─── Animations ────────────────────────────────────────────────────────── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Gentle floating bob — used on profile photo */
+@keyframes float {
+  0%, 100% { transform: translateY(0);     }
+  50%       { transform: translateY(-12px); }
+}
+
+/* Soft pulsing ring around profile photo */
+@keyframes pulseRing {
+  0%, 100% { opacity: 0.3; transform: scale(1);    }
+  50%       { opacity: 0.6; transform: scale(1.05); }
+}
+
+/* Scale-in entry — for cards and images */
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1);    }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+}
+
+.animate-pulse-ring {
+  animation: pulseRing 3s ease-in-out infinite;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* ─── Scrollbar ─────────────────────────────────────────────────────────── */
+::-webkit-scrollbar       { width: 5px; }
+::-webkit-scrollbar-track { background: #F2F8F4; }
+::-webkit-scrollbar-thumb { background: #D2E8DA; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #1D3D2A; }

@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "deploy": "next build && npx wrangler pages deploy out --project-name=qubaylhub --branch=main --commit-dirty=true"
+    "deploy": "next build && npx wrangler pages deploy out --project-name=qubaylhub --branch=main --commit-message=deploy"
   },
   "dependencies": {
     "next": "16.1.6",

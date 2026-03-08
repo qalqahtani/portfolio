@@ -4,7 +4,7 @@ export const content: Content = {
   meta: {
     title: "Qubayl Alqahtani — Data Engineer & Data Scientist",
     description:
-      "Data Engineer and Data Scientist with 6+ years of experience in ML systems, data pipelines, and production analytics.",
+      "Data Engineer and Data Scientist specializing in ML systems, data pipelines, and production analytics.",
   },
   nav: {
     logo: "Qubayl",
@@ -30,7 +30,7 @@ export const content: Content = {
     sectionTag: "/ about",
     sectionTitle: "About Me",
     paragraphs: [
-      "I'm a data professional with 7+ years of experience spanning data science, machine learning, and data engineering. My work centers on turning raw data into reliable systems — from building predictive models to deploying production-grade pipelines.",
+      "I'm a data professional with experience spanning data science, machine learning, and data engineering. My work centers on turning raw data into reliable systems — from building predictive models to deploying production-grade pipelines.",
       "I've worked across the full data lifecycle — developing ML models for real-world optimization problems and building the MLOps infrastructure to take those models to production reliably at scale.",
       "I hold a Master's in Information Systems from King Saud University, specializing in Data Mining, Machine Learning, and NLP. I'm driven by curiosity about data and a commitment to building things that work at scale.",
     ],

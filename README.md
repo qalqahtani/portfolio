@@ -1,36 +1,72 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Qubayl Alqahtani — Portfolio
 
-## Getting Started
+Personal portfolio website built with Next.js, Tailwind CSS v4, and TypeScript. Deployed as a static site on Cloudflare Pages at [qubayl.dev](https://qubayl.dev).
 
-First, run the development server:
+## Stack
+
+- **Framework**: Next.js (App Router, static export)
+- **Styling**: Tailwind CSS v4 — all tokens in `app/globals.css`, no `tailwind.config.js`
+- **Language**: TypeScript
+- **Fonts**: Cairo (Arabic/Latin) + Inter (English) via `next/font/google`
+- **i18n**: Custom `LanguageContext` — Arabic default, English toggle, persisted in `localStorage`
+- **Hosting**: Cloudflare Pages
+
+## Local Development
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Content
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+All bilingual content lives in:
 
-## Learn More
+- `config/content.en.ts` — English
+- `config/content.ar.ts` — Arabic
+- `config/content.interface.ts` — shared TypeScript interface
 
-To learn more about Next.js, take a look at the following resources:
+Edit these files to update text, experience, projects, or skills.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Resume
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The resume PDF served at `/Qubayl_Alqahtani_Resume.pdf` is generated from:
 
-## Deploy on Vercel
+- `~/Documents/generate_resume_pdf.py` — PDF (ReportLab, EB Garamond)
+- `~/Documents/generate_resume.py` — Word DOCX (python-docx, Garamond)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+To update the resume:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Edit content in the generator scripts
+2. Run `python3 ~/Documents/generate_resume_pdf.py`
+3. Copy output to `public/`: `cp ~/Documents/Qubayl_Alqahtani_Resume_DRAFT.pdf public/Qubayl_Alqahtani_Resume.pdf`
+4. Deploy (see below)
+
+## Deployment
+
+The site deploys to Cloudflare Pages via Wrangler.
+
+### One-command deploy
+
+```bash
+npm run deploy
+```
+
+This runs `next build` then uploads the `out/` directory to Cloudflare Pages under the `qubaylhub` project.
+
+### Manual steps
+
+```bash
+# 1. Build static output
+npm run build
+
+# 2. Deploy to Cloudflare Pages
+npx wrangler pages deploy out --project-name=qubaylhub --branch=main
+```
+
+### Prerequisites
+
+- [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/) installed and authenticated (`npx wrangler login`)
+- Cloudflare Pages project named `qubaylhub` already created
